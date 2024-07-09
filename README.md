@@ -1,2 +1,2 @@
 # Security_camera
-- motion detector
+- it detects motion in webcam and play alarm 
