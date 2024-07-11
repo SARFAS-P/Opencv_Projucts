@@ -12,6 +12,7 @@ drawing_utils = mp.solutions.drawing_utils
 screen_width, screen_height = pyautogui.size()
 index_y = 0
 pTime = 0
+middle_y = 0
 
 while True:
     _, frame = cap.read()
@@ -35,22 +36,35 @@ while True:
 
                 #for index finger
                 if id == 8:
-                    cv2.circle(img=frame,center=(x,y),radius=10,color=(255,0,0),thickness=cv2.FILLED)
+                    cv2.circle(img=frame,center=(x,y),radius=10,color=(255,255,0),thickness=cv2.FILLED)
                     index_x = screen_width/frame_width*x
                     index_y = screen_height/frame_height*y
 
+                 #for middle finger
+                if id == 12:
+                     cv2.circle(img=frame,center=(x,y),radius=10,color=(0,0,255),thickness=cv2.FILLED)
+                     middle_x = screen_width/frame_width*x
+                     middle_y = screen_height/frame_height*y
 
+                
                 #for thumb finger
                 if id == 4:
                     cv2.circle(img=frame,center=(x,y),radius=10,color=(255,0,0),thickness=cv2.FILLED)
                     thumb_x = screen_width/frame_width*x
                     thumb_y = screen_height/frame_height*y
-                    print('outside', abs(index_y - thumb_y))
+                    
+                    #printing the abs distances b/w index vs thumb and middle vs thumb fingers
+                    print('outside', abs(index_y - thumb_y),abs(middle_y-thumb_y))
 
                     #checking the distance b/w thumb and index fingers
                     if abs(index_y - thumb_y) < 55:
                         pyautogui.click()
                         pyautogui.sleep(1)
+
+                    elif abs(middle_y-thumb_y) < 45 : 
+                        pyautogui.rightClick()  
+                        pyautogui.sleep(1)
+                        
                     elif abs(index_y - thumb_y) < 500:
                         pyautogui.moveTo(index_x, index_y)
 
