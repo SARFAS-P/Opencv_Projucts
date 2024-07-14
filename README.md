@@ -4,6 +4,6 @@
 ------------------------
 -Can Use mouse operation with our own hands using guesters
 
-left click :- thumb and index finger togather \n
-right click :- thumb and middle finger togather
-mouse move :-move your hand
+-left click :- thumb and index finger togather 
+-right click :- thumb and middle finger togather
+-mouse move :-move your hand
